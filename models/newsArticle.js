@@ -18,14 +18,14 @@ const newsArticleSchema = new Schema ({
   details: {
     type: String,
     required: true,
-    minlength: 20,
+    minlength: 3,
     maxlength: 300,
   },
   date: {
     type: Date,
     default: Date.now,
     required: true,
-    minlength: 10,
+    minlength: 3,
     maxlength: 20,
   },
 })

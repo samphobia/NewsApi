@@ -5,6 +5,18 @@ const newsPageController = require('../controllers/newsPage')
 const router = express.Router()
 
 // router.get('/add-newsArticle', newsPageController.getAddNewsArticle)
+/**
+ * @swagger
+ * components:
+ *  securitySchemes:
+ *    bearerAuth:
+ *      type: http
+ *      scheme: bearer
+ *      bearerFormat: JWT
+ *      
+ *      
+ *    
+ */
 
 /**
  * @swagger
@@ -115,6 +127,8 @@ router.post('/add-newsArticle', newsPageController.postAddNewsArticle)
  *            schema:
  *              type: array
  *              items:
+ *      400:
+  *        description: There was an error loading all news Article
  * 
  */
 
@@ -122,9 +136,18 @@ router.post('/add-newsArticle', newsPageController.postAddNewsArticle)
 
  /**
   * @swagger
-  * /news/newsArticleId:
+  * /news/{:newsArticleId}:
   *  get:
-  *    summary: creates a news Article
+  *    summary: gets article by id
+  *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              Id:
+ *                type: string
   *    tags: [News Article]
   *    responses: 
   *      200:
@@ -134,10 +157,10 @@ router.post('/add-newsArticle', newsPageController.postAddNewsArticle)
   *            schema:
   *              type: object
   *      400:
-  *        description: There was an error creating the news Article
+  *        description: There was an error loading the news Article
   * 
   */
 
-router.get('newsArticleId', newsPageController.getOneNewsArticle)
+router.get('{:newsArticleId}', newsPageController.getOneNewsArticle)
 
 module.exports = router;

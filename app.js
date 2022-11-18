@@ -23,6 +23,11 @@ const options = {
   apis: ["./routes/*.js"]
 }
 
+
+
+// Method can be called in any place after calling constructor SwaggerUIBundle
+
+
 const specs = swaggerJsDoc(options)
 
 const app = express()
