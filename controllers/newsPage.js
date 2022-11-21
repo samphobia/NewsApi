@@ -15,11 +15,18 @@ exports.postAddNewsArticle = (req, res, next) => {
     .save()
     .then(result => {
       // console.log(result);
-      console.log('Created News');
+      res.status(200).json({
+        status: "Success",
+        message: "Article created"
+      });
       // res.redirect('/admin/products');
     })
     .catch(err => {
-      console.log(err);
+      console.log(err)
+      res.status(402).json({
+        status: "Failed",
+        message: "could not create article"
+      })
     });
 };
 
@@ -28,11 +35,15 @@ exports.getNewsArticle = (req, res, next) => {
   .then(newsArticles => {
     res.status(200).json({
       news: newsArticles,
+      status: "Success",
       message: "Resource loaded successfully"
     })
   })
   .catch(err => {
-    console.log(err)
+    res.status(200).json({
+      status: "Failed",
+      message: "Resource loaded failed"
+    })
   })
 };
 
