@@ -23,7 +23,6 @@ exports.postAddNewsArticle = (req, res, next) => {
       // res.redirect('/admin/products');
     })
     .catch(err => {
-      console.log(err)
       res.status(402).json({
         status: "Failed",
         message: "could not create article"
@@ -41,7 +40,6 @@ exports.getNewsArticle = (req, res, next) => {
     })
   })
   .catch(err => {
-    console.log(err)
     res.status(200).json({
       status: "Failed",
       message: "Resource loaded failed"
@@ -58,7 +56,6 @@ exports.getOneNewsArticle = (req, res, next) => {
     })
   })
   .catch(err => {
-    console.log(err),
     res.status(402).json({
       status: "Failed loading article",
       message: "Resource not found"

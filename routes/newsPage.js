@@ -139,6 +139,7 @@ router.post('/add-newsArticle', newsPageController.postAddNewsArticle)
   * /news/Id:
   *  get:
   *    summary: gets article by id
+  *    tags: [News Article]
   *    parameters:
   *       - in: path
   *         name: id
