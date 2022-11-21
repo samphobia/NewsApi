@@ -1,3 +1,4 @@
+const { response } = require("express");
 const {NewsArticle} = require("../models/newsArticle");
 
 exports.postAddNewsArticle = (req, res, next) => {
@@ -40,6 +41,7 @@ exports.getNewsArticle = (req, res, next) => {
     })
   })
   .catch(err => {
+    console.log(err)
     res.status(200).json({
       status: "Failed",
       message: "Resource loaded failed"
@@ -48,24 +50,18 @@ exports.getNewsArticle = (req, res, next) => {
 };
 
 exports.getOneNewsArticle = (req, res, next) => {
-  const {articleId} = req.params.newsArticleId;
-  if ( articleId == ''){
-    res.status(400).json({
-      status: "Failed",
-      message: "please enter articleID"
-    }) 
-  } else {
-    NewsArticle.findByID(articleId)
-    .then(newsArticle => {
+  const Id = req.params.newsArticle_Id;
+  NewsArticle.findOne(Id)
+    .then(news => {
     res.status(200).json({
-      oneArticle: newsArticle
+      news: news
     })
   })
   .catch(err => {
+    console.log(err),
     res.status(402).json({
       status: "Failed loading article",
       message: "Resource not found"
     })
   })
   }
-}
