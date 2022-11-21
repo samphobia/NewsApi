@@ -16,7 +16,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:3002"
+        url: "https://dkn-webapi.herokuapp.com"
       }
     ],
   },
