@@ -28,6 +28,9 @@ const newsArticleSchema = new Schema ({
     minlength: 3,
     maxlength: 20,
   },
+  // _id: {
+  //   type: String
+  // },
 })
 
 const NewsArticle = mongoose.model('NewsArticle', newsArticleSchema);

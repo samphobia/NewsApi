@@ -136,7 +136,7 @@ router.post('/add-newsArticle', newsPageController.postAddNewsArticle)
 
  /**
   * @swagger
-  * /news/Id:
+  * /news/{id}:
   *  get:
   *    summary: gets article by id
   *    tags: [News Article]
@@ -144,12 +144,14 @@ router.post('/add-newsArticle', newsPageController.postAddNewsArticle)
   *       - in: path
   *         name: id
   *         schema:
-  *            type: string
+  *            type: array
+  *            items:
+  *               type: string
   *         required: true
   *         description: news Article ID
   *    responses: 
   *      200:
-  *        description: created new article
+  *        description: article loaded successfully
   *        content:
   *          application/json:
   *            schema:
@@ -159,6 +161,6 @@ router.post('/add-newsArticle', newsPageController.postAddNewsArticle)
   * 
   */
 
-router.get('/Id', newsPageController.getOneNewsArticle)
+router.get('/:id', newsPageController.getNewsArticleId )
 
 module.exports = router;

@@ -40,6 +40,7 @@ exports.getNewsArticle = (req, res, next) => {
     })
   })
   .catch(err => {
+    console.log(err)
     res.status(200).json({
       status: "Failed",
       message: "Resource loaded failed"
@@ -47,18 +48,24 @@ exports.getNewsArticle = (req, res, next) => {
   })
 };
 
-exports.getOneNewsArticle = (req, res, next) => {
-  const Id = req.params.newsArticle_Id;
-  NewsArticle.findOne(Id)
-    .then(news => {
+exports.getNewsArticleId = (req, res) => {
+  if(req.params.id){
+    const Id = req.params.id
+    NewsArticle.findById({_id: Id})
+    .then(newsArticles => {
     res.status(200).json({
-      news: news
+      news: newsArticles,
+      status: "Success",
+      message: "Resource Loaded Successfully"
     })
   })
   .catch(err => {
+    console.log(err)
     res.status(402).json({
       status: "Failed loading article",
       message: "Resource not found"
     })
   })
+  }
+  
   }
