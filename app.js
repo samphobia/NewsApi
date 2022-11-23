@@ -17,7 +17,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://dkn-webapi.herokuapp.com"
+        url: "https://dkn-webapi.herokuapp.com"
               
       }
     ],
