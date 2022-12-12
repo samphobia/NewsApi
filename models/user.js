@@ -18,7 +18,7 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  Account: [
+  account: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Account'
