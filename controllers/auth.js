@@ -13,7 +13,7 @@ exports.signup = (req, res, next) => {
   throw error;
 }
 const firstName =  req.body.firstName;
-const lastName =  req.body.lastNmae;
+const lastName =  req.body.lastName;
 const email = req.body.email;
 const password = req.body.password;
 bcrypt.hash(password, 12).then(hashedPw => {

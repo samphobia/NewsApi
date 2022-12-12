@@ -48,17 +48,18 @@ const router = express.Router();
 router.put(
   '/signup',
   [
-    body('firstName').trim()
-    .not()
+    body('firstName')
+      .trim()
+      .not()
       .isEmpty(),
-    body('lasttName')
+    body('lastName')
       .trim()
       .not()
       .isEmpty(),
     body('email')
       .isEmail()
       .withMessage('Please enter a valid email.')
-      .custom((value, {req}) => {
+      .custom((value, {req})  => {
         return User.findOne({email: value}).then(userDoc => {
           if (userDoc) {
             return Promise.reject('E-mail address already exist!');
