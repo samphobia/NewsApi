@@ -17,7 +17,7 @@ const options = {
     },
     servers: [
       {
-        url: "https://dkn-webapi.herokuapp.com"
+        url: "http://localhost:3002"
               
       }
     ],
@@ -41,11 +41,14 @@ app.use(express.json())
 
 
 
-app.use(bodyParser.urlencoded({extended: false}))
+// app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json());
 
-const newsPageRoutes = require('./routes/newsPage')
+const newsPageRoutes = require('./routes/newsPage');
+const authRoutes = require('./routes/auth');
 
 app.use('/news', newsPageRoutes)
+app.use('/auth', authRoutes)
 
 const port = process.env.PORT
 
