@@ -46,9 +46,11 @@ app.use(bodyParser.json());
 
 const newsPageRoutes = require('./routes/newsPage');
 const authRoutes = require('./routes/auth');
+const accountRoutes = require('./routes/account')
 
 app.use('/news', newsPageRoutes)
 app.use('/auth', authRoutes)
+app.use('/account', accountRoutes)
 
 const port = process.env.PORT
 
