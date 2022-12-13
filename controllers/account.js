@@ -1,3 +1,5 @@
+// const fs = require('fs');
+// const path = require('path')
 const { validationResult } = require('express-validator')
 
 const Account = require('../models/account')
@@ -10,19 +12,20 @@ exports.createAccount = (req, res, next) => {
     error.statusCode = 422;
     throw error
   }
-  const accNo = Math.floor(1000000000 + Math.random() * 900000000000);
-  const accBalance = Math.floor(0.00);
+  const accNo = Math.floor(1000000000 + Math.random() * 900000000000).toString();
+  console.log(accNo)
+  const accBalance = Math.floor(0.00).toString();
   const bvn = req.body.bvn;
   let accountUser;
   const account = new Account({
     accNumber: accNo,
     accBalance: accBalance,
     bvn: bvn,
-    accountUser: req.userId
+    accountUser: (req.userId)
   });
   account
     .save()
-    .tnen(result => {
+    .then(result => {
       return User.findById(req.userId);
     })
     .then(user => {

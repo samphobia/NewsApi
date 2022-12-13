@@ -44,7 +44,7 @@ router.post(
   [
     body('bvn')
       .trim()
-      .isLength({min: 11, max: 11 })
+      .isLength({min: 11 })
   ],
   accountController.createAccount
 )

@@ -8,7 +8,7 @@ const accountSchema = new Schema(
       required: true,
     },
     accBalance: {
-      type: Number,
+      type: String,
       requied: true
     },
     bvn: {
@@ -23,4 +23,4 @@ const accountSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model('account', accountSchema);
+module.exports = mongoose.model('Account', accountSchema);
