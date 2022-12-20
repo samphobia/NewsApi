@@ -17,7 +17,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:3002"
+        url: "https://plum-nutty-oyster.cyclic.app/"
               
       }
     ],
