@@ -13,7 +13,7 @@ const options = {
     info: {
       title: "Denukan API",
       version: "1.0.0",
-      description: "DENUKAN SOFTWARE API"
+      description: "DENUKAN SOFTWARE API v2.0"
     },
     servers: [
       {
