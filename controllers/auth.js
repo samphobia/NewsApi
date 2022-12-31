@@ -27,8 +27,9 @@ bcrypt.hash(password, 12).then(hashedPw => {
 })
 .then(result => {
   res.status(201).json({
-    message: 'User created!',
-    user: result._id
+    user: result,
+    status: 'SUCCESS',
+    message: 'Registration completed successfully'
   })
 })
 .catch(err => {
@@ -67,7 +68,12 @@ exports.login = (req, res, next) => {
         'denukanfinanceapp',
         { expiresIn: 60 * 5 }
       );
-      res.status(200).json({token: token, userId: loadedUser._id.toString() });
+      res.status(200).json({
+        token: token, 
+        userId: loadedUser,
+        status: 'SUCCESS',
+        message: 'login successful'
+      });
     })
     .catch(err => {
       if (!err.statusCode) {
