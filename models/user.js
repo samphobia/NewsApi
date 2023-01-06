@@ -20,7 +20,8 @@ const userSchema = new Schema({
   },
   account: [
     {
-      
+      type: Schema.Types.ObjectId,
+      ref: 'Account'
     }
   ]
 },

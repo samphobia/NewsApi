@@ -19,6 +19,9 @@ const options = {
       {
         url: "https://plum-nutty-oyster.cyclic.app/"
               
+      },
+      {
+        url: "http://localhost:3002/"
       }
     ],
   },
