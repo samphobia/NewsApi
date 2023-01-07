@@ -33,11 +33,13 @@ bcrypt.hash(password, 12).then(hashedPw => {
   })
 })
 .catch(err => {
-  if (!err.statusCode) {
-    err.statusCode = 500;
-  }
+  res.status(402).json({
+    error: err,
+    status: "Failed",
+    message: "please try signing in again"
+  })
   next(err)
-})
+});
 }
 
 exports.login = (req, res, next) => { 
@@ -76,9 +78,11 @@ exports.login = (req, res, next) => {
       });
     })
     .catch(err => {
-      if (!err.statusCode) {
-        err.statusCode = 500
-      }
-      next(err);
-    })
+      res.status(402).json({
+        error: err,
+        status: "Failed",
+        message: "please try login in again"
+      })
+      next(err)
+    });
 }

@@ -13,7 +13,7 @@ exports.createAccount = (req, res, next) => {
     throw error
   }
   const accNo = Math.floor(1000000000 + Math.random() * 900000000000).toString();
-  console.log(accNo)
+  // console.log(accNo)
   const accBalance = Math.floor(0.00).toString();
   const bvn = req.body.bvn;
   let accountUser;

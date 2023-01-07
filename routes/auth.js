@@ -6,12 +6,12 @@ const authController = require('../controllers/auth')
 
 const router = express.Router();
 
-/**
- * @swagger
- * tags:
- *  name: Authentication
- *  description: login and SignUp User
- */
+// /**
+//  * @swagger
+//  * tags:
+//  *  name: Authentication
+//  *  description: login and SignUp User
+//  */
 /**
  * @swagger
  * /auth/signup:

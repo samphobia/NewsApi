@@ -15,6 +15,20 @@ const options = {
       version: "1.0.0",
       description: "DENUKAN SOFTWARE API v2.2"
     },
+    components: {
+      securitySchemas: {
+        bearerAuth: {
+          type: 'http',
+          schema: 'bearer',
+          bearerFormat: "JWT"
+        }
+      }
+    },
+    security: [
+      {
+        bearerAuth: [],
+      }
+    ],
     servers: [
       {
         url: "https://plum-nutty-oyster.cyclic.app/"
@@ -25,6 +39,7 @@ const options = {
       }
     ],
   },
+
   apis: ["./routes/*.js"]
 }
 

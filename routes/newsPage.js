@@ -5,18 +5,18 @@ const newsPageController = require('../controllers/newsPage')
 const router = express.Router()
 
 // router.get('/add-newsArticle', newsPageController.getAddNewsArticle)
-/**
- * @swagger
- * components:
- *  securitySchemes:
- *    bearerAuth:
- *      type: http
- *      scheme: bearer
- *      bearerFormat: JWT
- *      
- *      
- *    
- */
+// /**
+//  * @swagger
+//  * components:
+//  *  securitySchemes:
+//  *    bearerAuth:
+//  *      type: http
+//  *      scheme: bearer
+//  *      bearerFormat: JWT
+//  *      
+//  *      
+//  *    
+//  */
 
 /**
  * @swagger
