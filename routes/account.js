@@ -49,4 +49,6 @@ router.post(
   accountController.createAccount
 )
 
+router.put('/account/fundAccount', accountController.fundAccount)
+
 module.exports = router;

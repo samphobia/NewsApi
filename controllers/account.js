@@ -1,6 +1,7 @@
 // const fs = require('fs');
 // const path = require('path')
-const { validationResult } = require('express-validator')
+const { validationResult } = require('express-validator');
+const account = require('../models/account');
 
 const Account = require('../models/account')
 const User = require('../models/user')
@@ -46,4 +47,47 @@ exports.createAccount = (req, res, next) => {
       }
       next(err)
     })
+}
+
+exports.fundAccount = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const error = new Error('Please check details inputed');
+    error.statusCode = 422;
+    throw error
+  }
+  const accNumber = req.body.accNumber;
+  const addAmount = req.body.addAmount;
+  User.findOne({accNumber: accNumber, accBalance: accBalance})
+  .then(account => {
+    if (!account) {
+      const error = new Error('Please enter valid Account details')
+      error.statusCode = 404;
+      throw error;
+    }
+    if (account.accountUser.toString() !== req.userId) {
+      const error = new Error('Not authorized')
+      error.statusCode = 404
+      throw error
+    }
+    const accBalance = accBalance + addAmount
+    account.accBalance = accBalance;
+    return account.save()
+  })
+  .then(result => {
+    res.status(200).json({
+      data: account,
+      status: 'Success',
+      message: `Account ${account} was credited with ${addAmount}`
+    })
+  })
+  .catch(err => {
+    res.status(400).json({
+      error: err,
+      status: "Failed",
+      message: "Error funding account"
+    })
+    next(err);
+  })
+  
 }
