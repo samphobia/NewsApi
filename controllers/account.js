@@ -50,7 +50,7 @@ exports.createAccount = (req, res, next) => {
 }
 
 exports.fundAccount = (req, res, next) => {
-  const errors = validationResult(req);
+  const errors = validationResult(req.body);
   if (!errors.isEmpty()) {
     const error = new Error('Please check details inputed');
     error.statusCode = 422;
@@ -65,13 +65,13 @@ exports.fundAccount = (req, res, next) => {
       error.statusCode = 404;
       throw error;
     }
-    if (account.accountUser.toString() !== req.userId) {
+    if (account.userId.toString() !== req.userId) {
       const error = new Error('Not authorized')
-      error.statusCode = 404
+      error.statusCode = 401
       throw error
     }
-    const accBalance = accBalance + addAmount
-    account.accBalance = accBalance;
+    const accBalance = account.accBalance + addAmount
+    accBalance = accBalance;
     return account.save()
   })
   .then(result => {
