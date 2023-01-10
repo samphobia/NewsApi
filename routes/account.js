@@ -49,6 +49,35 @@ router.post(
   accountController.createAccount
 )
 
+/**
+ * @swagger
+ * /account/createAccount:
+ *  put:
+ *    summary: Fund account 
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              accNumber:
+ *                type: string
+ *              addAmount:
+ *                type: string
+ *    tags: [Account]
+ *    responses: 
+ *      200:
+ *        description: Account funded successfully
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *      400:
+ *        description: There was an error funding account
+ * 
+ */
+
 router.put('/account/fundAccount', accountController.fundAccount)
 
 module.exports = router;
