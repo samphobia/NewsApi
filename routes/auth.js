@@ -109,7 +109,7 @@ router.post('/login', authController.login)
 
  /**
   * @swagger
-  * /auth/{userId}:
+  * /auth/{id}:
   *  get:
   *    summary: gets User by id
   *    tags: [Authentication]
@@ -134,6 +134,6 @@ router.post('/login', authController.login)
   * 
   */
 
-router.get('/:userId', authController.getUser)
+router.get('/:id', authController.getUser)
 
 module.exports = router;

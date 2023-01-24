@@ -90,24 +90,23 @@ exports.login = (req, res, next) => {
 }
 
 exports.getUser = (req, res, next) => {
-  const userId = req.params.userId;
-  User.findById(userId)
-  .then(user => {
-    if (!user) {
-      const error = new Error('Could not find user')
-      error.statusCode = 404
-      throw error;
-    }
+  if(req.params.id){
+    const Id = req.params.id
+    User.findById({_id: Id})
+    .then(user => {
     res.status(200).json({
-      user: user,
-      message: 'User fetched succesfully',
-      Status: "SUCCESS"
+      news: user,
+      status: "Success",
+      message: "User Loaded Successfully"
     })
   })
   .catch(err => {
-    if (!err.statusCode) {
-      err.statusCode = 500
-    }
-    next(err)
+    console.log(err)
+    res.status(402).json({
+      status: "Failed loading article",
+      message: "user not found"
+    })
   })
-}
+  }
+  
+  }
