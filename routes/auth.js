@@ -107,6 +107,20 @@ router.put(
 
 router.post('/login', authController.login)
 
-router.get('/user/:userId', authController.getUser)
+/**
+ * @swagger
+ * /auth/{userId}:
+ *  get:
+ *    summary; Get a user by ID
+ *    parameters:
+ *      - in: path
+ *        name: userId
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: Id of the User to get
+ */
+
+router.get('/:userId', authController.getUser)
 
 module.exports = router;
