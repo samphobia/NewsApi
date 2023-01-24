@@ -111,7 +111,7 @@ router.post('/login', authController.login)
  * @swagger
  * /auth/{userId}:
  *  get:
- *    summary; Get a user by ID
+ *    summary: Get a user by ID
  *    parameters:
  *      - in: path
  *        name: userId
