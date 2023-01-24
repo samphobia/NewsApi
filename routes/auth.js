@@ -107,19 +107,32 @@ router.put(
 
 router.post('/login', authController.login)
 
-/**
- * @swagger
- * /auth/{userId}:
- *  get:
- *    summary: Get a user by ID
- *    parameters:
- *      - in: path
- *        name: userId
- *        schema:
- *          type: string
- *        required: true
- *        description: Id of the User to get
- */
+ /**
+  * @swagger
+  * /auth/{userId}:
+  *  get:
+  *    summary: gets User by id
+  *    tags: [Authentication]
+  *    parameters:
+  *       - in: path
+  *         name: id
+  *         schema:
+  *            type: array
+  *            items:
+  *               type: string
+  *         required: true
+  *         description: news Article ID
+  *    responses: 
+  *      200:
+  *        description: User loaded successfully
+  *        content:
+  *          application/json:
+  *            schema:
+  *              type: object
+  *      400:
+  *        description: There was an error loading the User
+  * 
+  */
 
 router.get('/:userId', authController.getUser)
 
