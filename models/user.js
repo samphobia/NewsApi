@@ -18,10 +18,28 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  phone: {
+    type: String,
+    required: true
+  },
+  registerStatus: {
+    type: Boolean,
+    default: 'Registered'
+  },
+  loginStatus: {
+    type: Boolean,
+    default: 'Logged in'
+  },
   account: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Account'
+    }
+  ],
+  transactions: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Transactions'
     }
   ]
 },

@@ -15,12 +15,14 @@ exports.signup = (req, res, next) => {
 const firstName =  req.body.firstName;
 const lastName =  req.body.lastName;
 const email = req.body.email;
+const phone = req.body.phone;
 const password = req.body.password;
 bcrypt.hash(password, 12).then(hashedPw => {
   const user = new User({
     firstName: firstName,
     lastName: lastName,
     email: email,
+    phone: phone,
     password: hashedPw,
   });
   return user.save()
@@ -85,4 +87,27 @@ exports.login = (req, res, next) => {
       })
       next(err)
     });
+}
+
+exports.getUser = (req, res, next) => {
+  const userId = req.params.userId;
+  User.findById(userId)
+  .then(user => {
+    if (!user) {
+      const error = new Error('Could not find user')
+      error.statusCode = 404
+      throw error;
+    }
+    res.status(200).json({
+      user: user,
+      message: 'User fetched succesfully',
+      Status: "SUCCESS"
+    })
+  })
+  .catch(err => {
+    if (!err.statusCode) {
+      err.statusCode = 500
+    }
+    next(err)
+  })
 }

@@ -1,25 +1,25 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
-const accountSchema = new Schema(
+const transactionsSchema = new Schema(
   {
-    accNumber: {
+    transactionType: {
       type: String,
       required: true,
     },
-    accBalance: {
+    transactionStatus: {
       type: String,
       requied: true
     },
-    accType: {
+    amount: {
       type: String,
       requied: true
     },
-    bvn: {
+    transactionTo: {
       type: String,
       required: true
     },
-    accountUser: {
+    transactionUser: {
       type: Schema.Types.ObjectId,
       ref: 'User',
       required: true
@@ -28,6 +28,6 @@ const accountSchema = new Schema(
 { timestamps: true}
 );
 
-const Account = mongoose.model('Account', accountSchema);
+const Transactions = mongoose.model('Transactions', transactionsSchema);
 
-exports.Account = Account 
+exports.Transactions = Transactions 
