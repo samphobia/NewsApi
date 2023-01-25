@@ -74,7 +74,7 @@ exports.login = (req, res, next) => {
       );
       res.status(200).json({
         token: token, 
-        userId: loadedUser,
+        user: loadedUser,
         status: 'SUCCESS',
         message: 'login successful'
       });
