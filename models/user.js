@@ -23,11 +23,11 @@ const userSchema = new Schema({
     required: true
   },
   registerStatus: {
-    type: Boolean,
+    type: String,
     default: 'Registered'
   },
   loginStatus: {
-    type: Boolean,
+    type: String,
     default: 'Logged in'
   },
   account: [
