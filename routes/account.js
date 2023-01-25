@@ -51,8 +51,8 @@ router.post(
 
 /**
  * @swagger
- * /account/createAccount:
- *  put:
+ * /account/fundAccount:
+ *  post:
  *    summary: Fund account 
  *    requestBody:
  *      required: true
@@ -78,6 +78,6 @@ router.post(
  * 
  */
 
-router.put('/account/fundAccount', accountController.fundAccount)
+router.post('/fundAccount', accountController.fundAccount)
 
 module.exports = router;
