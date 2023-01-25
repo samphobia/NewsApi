@@ -16,11 +16,13 @@ exports.createAccount = (req, res, next) => {
   const accNo = Math.floor(1000000000 + Math.random() * 900000000000).toString();
   // console.log(accNo)
   const accBalance = Math.floor(0.00).toString();
+  const accType = req.body.accType
   const bvn = req.body.bvn;
-  let accountUser;
+  let accountUser = User.findOne({_id: req.body.userId});
   const account = new Account({
     accNumber: accNo,
     accBalance: accBalance,
+    accType: accType,
     bvn: bvn,
     accountUser: (req.userId)
   });

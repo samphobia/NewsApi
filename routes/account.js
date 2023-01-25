@@ -25,6 +25,10 @@ const router = express.Router()
  *            properties:
  *              bvn:
  *                type: string
+ *              accType:
+ *                type: string
+ *              UserId: 
+ *                type; string
  *    tags: [Account]
  *    responses: 
  *      200:
