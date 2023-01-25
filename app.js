@@ -11,7 +11,7 @@ const options = {
   definition: {
     openapi:  "3.0.0",
     info: {
-      title: "Denukan API",
+      title: "Denukan CoreBanking API Collections",
       version: "1.0.0",
       description: "DENUKAN SOFTWARE API v2.2"
     },
