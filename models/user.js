@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  firstName: {
+  fullName: {
     type: String,
     required: true
   },
-  lastName: {
-    type: String,
-    required: true
-  },
+  // lastName: {
+  //   type: String,
+  //   required: true
+  // },
   email: {
     type: String,
     required: true
@@ -28,7 +28,8 @@ const userSchema = new Schema({
   },
   gender: {
     type: String,
-    required: true
+    required: true,
+    default: 'Male or Female'
   },
   address: {
     type: String,
@@ -42,6 +43,12 @@ const userSchema = new Schema({
     type: String,
     default: 'Logged in'
   },
+  account: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Account'
+    }
+  ]
 },
 { timestamps: true}
 );

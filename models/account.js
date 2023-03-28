@@ -9,12 +9,10 @@ const accountSchema = new Schema(
     },
     accBalance: {
       type: String,
-      requied: true,
       default: '0.00'
     },
     accType: {
       type: String,
-      requied: true,
       default: 'savings'
     },
     // bvn: {

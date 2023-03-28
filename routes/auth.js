@@ -24,9 +24,7 @@ const router = express.Router();
  *          schema:
  *            type: object
  *            properties:
- *              firstName:
- *                type: string
- *              lastName:
+ *              fullName:
  *                type: string
  *              email:
  *                type: string
@@ -56,12 +54,7 @@ const router = express.Router();
 router.put(
   '/signup',
   [
-    body('firstName')
-      .trim()
-      .not()
-      .isEmpty(),
-    body('lastName')
-      .trim()
+    body('fullName')
       .not()
       .isEmpty(),
     body('email')

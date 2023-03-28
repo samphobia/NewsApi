@@ -1,7 +1,7 @@
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const Account = require('../models/Account')
+const {Account} = require('../models/Account')
 const User = require('../models/User');
 
 function generateAccountNumber() {
@@ -18,9 +18,8 @@ exports.signup = (req, res, next) => {
   throw error;
 }
 
-const firstName =  req.body.firstName;
-const lastName =  req.body.lastName;
-const email = req.body.email;
+const fullName =  req.body.fullName;
+const email = req.body.email
 const phone = req.body.phone;
 const password = req.body.password;
 const dOfBirth = req.body.dOfBirth;
@@ -28,8 +27,7 @@ const gender = req.body.gender;
 const address = req.body.address;
 bcrypt.hash(password, 12).then(hashedPw => {
   const user = new User({
-    firstName: firstName,
-    lastName: lastName,
+    fullName: fullName,
     email: email,
     phone: phone,
     password: hashedPw,
@@ -40,13 +38,21 @@ bcrypt.hash(password, 12).then(hashedPw => {
   return user.save()
   .then((savedUser)=> {
     const accNumber = generateAccountNumber()
-    const account = new Account({accNumber, userId: savedUser._id})
+    const account = new Account({accNumber, user: savedUser._id})
     return account.save()
   })
+  .then(result => {
+    return User.findById(req.userId)
+  })
+  .then(user => {
+    user = user;
+    user.account.push(account)
+    return user.save()
+  })
 })
-.then(result => {
+.then(user => {
   res.status(201).json({
-    user: result,
+    user: user,
     status: 'SUCCESS',
     message: 'Registration completed successfully'
   })
@@ -112,7 +118,7 @@ exports.getUser = (req, res, next) => {
     User.findById({_id: Id})
     .then(user => {
     res.status(200).json({
-      news: user,
+      user: user,
       status: "Success",
       message: "User Loaded Successfully"
     })
