@@ -27,8 +27,6 @@ const router = express.Router()
  *                type: string
  *              accType:
  *                type: string
- *              UserId: 
- *                type: string
  *    tags: [Account]
  *    responses: 
  *      200:

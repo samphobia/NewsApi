@@ -1,10 +1,9 @@
 // const fs = require('fs');
 // const path = require('path')
 const { validationResult } = require('express-validator');
-const account = require('../models/account');
 
-const Account = require('../models/account')
-const User = require('../models/user')
+const { Account } = require('../models/Account')
+const User = require('../models/User')
 
 exports.createAccount = (req, res, next) => {
   const errors = validationResult(req);
@@ -18,13 +17,14 @@ exports.createAccount = (req, res, next) => {
   const accBalance = Math.floor(0.00).toString();
   const accType = req.body.accType
   const bvn = req.body.bvn;
-  let accountUser = User.findOne({_id: req.body.userId});
+  let accountUser 
+
   const account = new Account({
     accNumber: accNo,
     accBalance: accBalance,
     accType: accType,
     bvn: bvn,
-    accountUser: (req.userId)
+    accountUser: req.user
   });
   account
     .save()

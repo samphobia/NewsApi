@@ -1,6 +1,6 @@
-const User = require("../models/user")
-const Transactions = require("../models/transactions")
-const Account = require("../models/account")
+const User = require("../models/User")
+const Transactions = require("../models/Transactions")
+const Account = require("../models/Account")
 
 exports.transactionOut = async (req, res, next) => {
   const errors = validationResult(req);

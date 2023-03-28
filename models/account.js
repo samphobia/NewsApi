@@ -9,21 +9,23 @@ const accountSchema = new Schema(
     },
     accBalance: {
       type: String,
-      requied: true
+      requied: true,
+      default: '0.00'
     },
     accType: {
       type: String,
-      requied: true
+      requied: true,
+      default: 'savings'
     },
-    bvn: {
-      type: String,
-      required: true
-    },
-    accountUser: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      required: true
-    }
+    // bvn: {
+    //   type: String,
+    //   required: true
+    // },
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+      required: true,
+   },
 },
 { timestamps: true}
 );

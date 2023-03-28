@@ -19,7 +19,7 @@ const transactionsSchema = new Schema(
       type: String,
       required: true
     },
-    transactionUser: {
+    user: {
       type: Schema.Types.ObjectId,
       ref: 'User',
       required: true

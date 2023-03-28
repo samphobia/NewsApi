@@ -22,6 +22,18 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  dOfBirth: {
+    type: String,
+    required: true
+  },
+  gender: {
+    type: String,
+    required: true
+  },
+  address: {
+    type: String,
+    required: true
+  },
   registerStatus: {
     type: String,
     default: 'Registered'
@@ -30,18 +42,6 @@ const userSchema = new Schema({
     type: String,
     default: 'Logged in'
   },
-  account: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Account'
-    }
-  ],
-  transactions: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Transactions'
-    }
-  ]
 },
 { timestamps: true}
 );
