@@ -43,7 +43,7 @@ const userSchema = new Schema({
     type: String,
     default: 'Logged in'
   },
-  account: [
+  accounts: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Account'

@@ -40,14 +40,14 @@ bcrypt.hash(password, 12).then(hashedPw => {
     const accNumber = generateAccountNumber()
     const account = new Account({accNumber, user: savedUser._id})
     return account.save()
-  })
-  .then(result => {
-    return User.findById(req.userId)
-  })
-  .then(user => {
-    user = user;
-    user.account.push(account)
-    return user.save()
+    .then(user => {
+      return User.findOne({user: user._id})
+    })
+    .then(user => {
+      user = user;
+      user.accounts.push(account)
+      return user.save()
+    })
   })
 })
 .then(user => {
