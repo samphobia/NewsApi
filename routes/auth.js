@@ -15,7 +15,7 @@ const router = express.Router();
 /**
  * @swagger
  * /auth/signup:
- *  put:
+ *  post:
  *    summary: creates a user
  *    requestBody:
  *      required: true
@@ -51,7 +51,7 @@ const router = express.Router();
  * 
  */
 //added changes to commit
-router.put(
+router.post(
   '/signup',
   [
     body('fullName')

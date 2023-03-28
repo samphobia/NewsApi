@@ -8,7 +8,7 @@ function generateAccountNumber() {
   const accountNumber = Math.floor(Math.random() * 9000000000) + 1000000000;
   return accountNumber.toString();
 }
-
+//export changes
 exports.signup = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
