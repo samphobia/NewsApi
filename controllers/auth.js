@@ -1,7 +1,7 @@
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const Account = require('../model/Account')
+const Account = require('../models/Account')
 const User = require('../models/User');
 
 function generateAccountNumber() {

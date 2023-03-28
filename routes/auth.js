@@ -34,6 +34,12 @@ const router = express.Router();
  *                type: string
  *              password:
  *                type: string
+ *              dOfBirth:
+ *                type: string
+ *              gender:
+ *                type: string
+ *              address:
+ *                type: string
  *    tags: [Authentication]
  *    responses: 
  *      200:
