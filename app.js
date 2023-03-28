@@ -11,17 +11,35 @@ const options = {
   definition: {
     openapi:  "3.0.0",
     info: {
-      title: "Denukan API",
+      title: "Denukan CoreBanking API Collections",
       version: "1.0.0",
-      description: "DENUKAN SOFTWARE API"
+      description: "DENUKAN SOFTWARE API v2.2"
     },
+    components: {
+      securitySchemas: {
+        bearerAuth: {
+          type: 'http',
+          schema: 'bearer',
+          bearerFormat: "JWT"
+        }
+      }
+    },
+    security: [
+      {
+        bearerAuth: [],
+      }
+    ],
     servers: [
       {
-        url: "https://dkn-webapi.herokuapp.com"
+        url: "https://cerise-life-jacket.cyclic.app/"
               
+      },
+      {
+        url: "http://localhost:3002/"
       }
     ],
   },
+
   apis: ["./routes/*.js"]
 }
 
@@ -42,10 +60,17 @@ app.use(express.json())
 
 
 app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json());
 
-const newsPageRoutes = require('./routes/newsPage')
+const newsPageRoutes = require('./routes/newsPage');
+const authRoutes = require('./routes/auth');
+const accountRoutes = require('./routes/account')
+const transactionRoutes = require('./routes/transactions')
 
 app.use('/news', newsPageRoutes)
+app.use('/auth', authRoutes)
+app.use('/account', accountRoutes)
+app.use('/transaction',  transactionRoutes)
 
 const port = process.env.PORT
 

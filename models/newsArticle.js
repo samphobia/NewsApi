@@ -7,19 +7,19 @@ const newsArticleSchema = new Schema ({
     type: String,
     required: true,
     minlength: 3,
-    maxlength: 300, 
+    maxlength: 3000, 
   },
   imageUrl: {
     type: String,
     required: true,
     minlength: 3,
-    maxlength: 300,
+    maxlength: 3000,
   },
   details: {
     type: String,
     required: true,
     minlength: 3,
-    maxlength: 3000,
+    maxlength: 300000,
   },
   date: {
     type: Date,

@@ -24,6 +24,7 @@ exports.postAddNewsArticle = (req, res, next) => {
     })
     .catch(err => {
       res.status(402).json({
+        error: err,
         status: "Failed",
         message: "could not create article"
       })
